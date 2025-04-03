@@ -1,0 +1,884 @@
+:root {
+  --primary_color: #8053ff;
+  --main_body_color: #23155b;
+  --gray_light_color: #817d8e;
+  --white_color: #f4f4f4;
+  --backgroundcolor: #d9d5d5;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: var(--backgroundcolor);
+  color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: var(--backgroundcolor);
+}
+
+.nav-mobil {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between; /* Sicherstellen, dass der Button rechts ausgerichtet ist */
+  align-items: center;
+}
+
+nav .navright button {
+  font-size: 12px; /* Kleinere Schriftgröße im mobilen Bereich */
+  padding: 8px 12px; /* Etwas mehr Platz für den Button */
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; 
+}
+
+.navright {
+  display: flex;
+  gap: 20px; 
+  flex-direction: row; 
+  justify-content: center;
+  align-items: center; 
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle img {
+  width: 24px;
+}
+
+main {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+main p {
+  font-size: 10px;
+  place-content: center;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  display: flex;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+button {
+  color: var(--white_color);
+  background-color: var(--primary_color);
+  border-radius: 5px;
+  border: none;
+  font-size: 10px;
+  padding: 5px 8px 5px 8px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.herobuttons {
+  display: flex;
+  width: fit-content;
+  gap: 10px;
+  padding: 20px;
+  
+}
+
+button:hover {
+  background-color: var(--white_color);
+  color: var(--primary_color);
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+h2 {
+  color: var(--primary_color);
+  text-align: center;
+}
+
+.team h2 {
+  color: #000;
+}
+
+h3 {
+  color: var(--primary_color);
+  }
+
+.level {
+  display: grid;
+  grid-template-columns: (1fr, 1fr);
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+.grid-container {
+  margin-bottom: 10px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns:150px 150px ;
+  grid-template-rows:60px 60px 1px;
+  grid-template-areas: "box-1-Area box-2-Area"
+                       "box-3-Area box-4-Area"
+                       ". box-4-Area";
+}
+
+@media (max-width: 768px) {
+  .team {
+    flex-direction: column; /* Stapelt Bild/Logo über dem Text */
+    align-items: center; /* Zentriert die Inhalte */
+    text-align: center;
+  }
+
+  .image-container {
+    width: 150px; /* Kleinere Größe für kleinere Bildschirme */
+    margin-left: 0; /* Zentrierung */
+  }
+
+  #pic {
+    width: 100%;
+    border-radius: 40px;
+    position: relative;
+    left: 80%;
+  }
+
+  #brand {
+    margin-top: 10px;
+    position: relative;
+    left: 100%;
+    transform: translateX(-50%); /* Zentriert das Logo */
+    width: 60px; /* Kleinere Logo-Größe für mobile Ansicht */
+  }
+
+  .text-content {
+    max-width: 90%;
+    margin: 20px auto; /* Zentrierung des Texts */
+    text-align: center;
+    align-items: center;
+  }
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.box-1 ,.box-2 ,.box-3 ,.box-4{
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);  
+}
+
+.grid-container p{
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.box-1{
+
+  grid-area: box-1-Area;
+}
+.box-2{
+  grid-area: box-2-Area;
+}
+.box-3{
+  grid-area: box-3-Area;
+}
+.box-4{
+  grid-area: box-4-Area;
+}
+
+.highlight {
+  color: var(--primary_color);
+}
+
+.main-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 350px;
+  grid-auto-flow: 80px 70px 30px;
+  grid-template-areas: 
+                      "first-box-area" 
+                      "second-box-area"
+                      "third-box-area" 
+                      "fourth-box-area"
+                      "fifth-box-area" 
+                      "sixth-box-area";
+}
+
+.main-container img{
+  width: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.main-container p{
+  font-size: 10px;
+  font-family: Martel Sans, sans-serif;
+}
+.main-container > button{
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+
+.first-box, .second-box, .third-box, .fourth-box, .fifth-box, .sixth-box{ 
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
+  display: flex;
+}
+
+.first-box{
+  grid-area: first-box-area;
+}
+
+.second-box{
+  grid-area: second-box-area;
+}
+
+.third-box{
+  grid-area: third-box-area;
+}
+
+.fourth-box{
+  grid-area: fourth-box-area;
+}
+
+.fifth-box{
+  grid-area: fifth-box-area;
+}
+
+.sixth-box{
+  grid-area: sixth-box-area;
+}
+
+section {
+  padding: 20px;
+}
+
+.sub-container{
+  margin-top:10px ;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 350px;
+  grid-auto-flow: 80px 70px 30px;
+  grid-template-areas: 
+                      "seventh-box-area" 
+                      "eighth-box-area"
+                      "ninth-box-area" 
+                      "tenth-box-area"
+                      "eleventh-box-area" 
+                      "twelvth-box-area";
+}
+
+.sub-container img{
+  width: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.sub-container p{
+  font-size: 10px;
+  font-family: Martel Sans, sans-serif;
+}
+.sub-container > button{
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+
+.seventh-box, .eighth-box, .ninth-box, .tenth-box, .eleventh-box, .twelveth-box{ 
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
+  display: flex;
+
+}
+
+.seventh-box{
+  grid-area: seventh-box-area;
+}
+
+.eleventh-box{
+  grid-area: eighth-box-area;
+}
+
+.eighth-box{
+  grid-area: ninth-box-area;
+}
+
+.ninth-box{
+  grid-area: tenth-box-area;
+}
+
+.tenth-box{
+  grid-area: eleventh-box-area;
+}
+
+.twelveth-box{
+  grid-area: twelvth-box-area;
+}
+
+#monials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonials {
+    background-color: var(--white_color);
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto; 
+    max-width: 960px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+#user {
+  
+  align-self: center;
+  width: 50%;
+  border-radius: 100%;
+}
+
+footer {
+  background-color: var(--main_body_color);
+  color: var(--white_color);
+  padding: 1rem;
+  border-top-left-radius: 90px;
+  text-align: start;
+  padding-left: 50px;
+}
+
+#contact {
+  text-align: start;
+}
+
+/* Mobile-first styles */
+/* === Base Styles (Mobile First: bis 480px) === */
+body {
+  font-size: 14px;
+}
+
+.nav-mobil {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+}
+
+/* === Ab 481px: Mobile Landscape Ansicht === */
+@media (min-width: 481px) {
+  body {
+    font-size: 16px;
+  }
+
+  .nav-mobil {
+    justify-content: space-between;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 30px;
+  }
+
+  .testimonials {
+    align-items: center;
+  }
+
+}
+
+/* === Ab 768px: Tablets (Portrait) === */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .nav-mobil {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+   
+    
+  }
+
+  .box-1 ,.box-2 ,.box-3 ,.box-4{
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05); 
+    width: 200px;
+  }
+  
+  .grid-container p{
+    font-size: 10px;
+    font-weight: bold;
+  }
+  
+  nav {
+    flex-direction: row; /* Menü & Logo nebeneinander */
+    justify-content: space-between; /* Logo links, Menü rechts */
+    align-items: center;
+    padding: 20px 80px; /* Gleiches Padding wie bei 1024px */
+  }
+
+  .logo {
+    justify-content: flex-start; /* Logo nach links */
+    margin-bottom: 0;
+  }
+
+  .navright {
+    justify-content: flex-end; /* Links + Button nach rechts */
+    gap: 30px; /* Mehr Abstand zwischen Links & Button */
+  }
+
+  .main-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 350px;
+    grid-auto-flow: 80px 70px 30px;
+    grid-template-areas: 
+                        "first-box-area second-box-area"
+                        "third-box-area fourth-box-area"
+                        "fifth-box-area sixth-box-area";
+  }
+
+  .sub-container{
+    margin-top:10px ;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 350px;
+    grid-auto-flow: 80px 70px 30px;
+    grid-template-areas: 
+                        "seventh-box-area eighth-box-area"
+                        "ninth-box-area tenth-box-area"
+                        "eleventh-box-area twelvth-box-area";
+  }
+
+.team {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: left;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  width: 200px;
+}
+
+#pic {
+  width: 100%;
+  border-radius: 40px;
+  margin-left: px;
+}
+
+#brand {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 80px;
+  margin-left: 20px;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 500px;
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 120px;
+}
+
+.testimonials {
+max-width: 300px;
+}
+
+}
+
+/* === Ab 1024px: Tablets (Landscape) & kleine Laptops === */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .nav-mobil {
+    justify-content: space-around;
+  }
+
+  .hero {
+    padding: 80px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 150px;
+  }
+
+  .box-1 ,.box-2 ,.box-3 ,.box-4{
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05); 
+    width:200px ;
+  }
+  
+  .grid-container p{
+    font-size: 10px;
+    font-weight: bold;
+  }
+  
+
+  .main-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav {
+    flex-direction: row; /* Menü & Logo nebeneinander */
+    justify-content: space-between; /* Abstand zwischen Logo & Menü */
+    align-items: center;
+    padding: 15px 50px;
+  }
+
+  .logo {
+    justify-content: flex-start; /* Logo nach links */
+    margin-bottom: 0;
+  }
+
+  .navright {
+    justify-content: flex-end; /* Links + Button nach rechts */
+  }
+
+  .main-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 500px 500px;
+    grid-auto-flow: 80px 70px 30px;
+    grid-template-areas: 
+                        "first-box-area second-box-area"
+                        "third-box-area fourth-box-area"
+                        "fifth-box-area sixth-box-area";
+  }
+
+  .sub-container{
+    margin-top:10px ;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 350px;
+    grid-auto-flow: 80px 70px 30px;
+    grid-template-areas: 
+                        "seventh-box-area eighth-box-area"
+                        "ninth-box-area tenth-box-area"
+                        "eleventh-box-area twelvth-box-area";
+  }
+
+  .team {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    /* justify-content: flex-start; */
+    align-items: left;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 200px;
+    margin-left: -90px; 
+  }
+  
+  #pic {
+    width: 100%;
+    border-radius: 40px;
+  }
+  
+  #brand {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 80px;
+    margin-left: 20px;
+  }
+  
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 500px;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 80px;
+  }
+  
+  .testimonials {
+  max-width: 300px;
+    }
+
+  
+  .footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main_body_color);
+    color: var(--white_color);
+    padding: 1rem;
+    border-top-left-radius: 90px;
+    text-align: start;
+    padding-left: 50px;
+    
+  }
+  
+  
+
+  #allrights {
+    text-align: center;
+    }
+
+    input, textarea {
+      width: 45%; /* Setzt die Breite auf 100%, sodass alle Felder gleich breit sind */
+      padding: 10px; /* Padding für mehr Platz */
+      border-radius: 5px; /* Abgerundete Ecken */
+      border: 1px solid #ccc; /* Optional: Border für das Input-Feld */
+      box-sizing: border-box; /* Verhindert, dass Padding und Border die Gesamtbreite beeinflussen */
+    }
+
+}
+
+
+
+/* === Ab 1280px: Große Desktops === */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero {
+    padding: 100px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 360px;
+  }
+
+  .box-1 ,.box-2 ,.box-3 ,.box-4{
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05); 
+    width:200px ;
+  }
+  
+  .grid-container p{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+
+  .main-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  nav {
+    padding: 20px 80px;
+  }
+
+  .navright {
+    gap: 30px; /* Mehr Abstand zwischen Links & Button */
+  }
+
+  .main-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 500px 500px;
+    grid-auto-flow: 80px 70px 30px;
+    grid-template-areas: 
+                        "first-box-area second-box-area"
+                        "third-box-area fourth-box-area"
+                        "fifth-box-area sixth-box-area";
+  }
+
+  .sub-container{
+    margin-top:10px ;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 350px;
+    grid-auto-flow: 80px 70px 30px;
+    grid-template-areas: 
+                        "seventh-box-area eighth-box-area"
+                        "ninth-box-area tenth-box-area"
+                        "eleventh-box-area twelvth-box-area";
+  }
+
+  .team {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    /* justify-content: flex-start; */
+    align-items: left;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 200px;
+    margin-left: -300px; /* Negativer Margin für Bild */
+  }
+  
+  #pic {
+    width: 100%;
+    border-radius: 40px;
+  }
+  
+  #brand {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 80px;
+    margin-left: 20px;
+  }
+  
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 500px;
+    text-align: left;
+    margin-left: -200px;
+    margin-top: 80px;
+  }
+  
+  .testimonials {
+  max-width: 300px;
+  
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main_body_color);
+    color: var(--white_color);
+    padding: 1rem;
+    border-top-left-radius: 90px;
+    text-align: start;
+    padding-left: 50px;
+  }
+
+  .footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main_body_color);
+    color: var(--white_color);
+    padding: 1rem;
+    border-top-left-radius: 90px;
+    text-align: start;
+    padding-left: 50px;
+    
+  }
+  
+  
+
+  #allrights {
+    text-align: center;
+    }
+
+    input, textarea {
+      width: 45%; /* Setzt die Breite auf 100%, sodass alle Felder gleich breit sind */
+      padding: 10px; /* Padding für mehr Platz */
+      border-radius: 5px; /* Abgerundete Ecken */
+      border: 1px solid #ccc; /* Optional: Border für das Input-Feld */
+      box-sizing: border-box; /* Verhindert, dass Padding und Border die Gesamtbreite beeinflussen */
+    }
+
+}
