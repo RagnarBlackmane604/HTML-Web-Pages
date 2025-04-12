@@ -6,7 +6,8 @@
   --backgroundcolor: #d9d5d5;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -15,13 +16,15 @@ body, html {
 body {
   background-color: var(--backgroundcolor);
   color: black;
+  font-size: 14px;
 }
 
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  position: relative;
   padding: 20px;
   background-color: var(--backgroundcolor);
 }
@@ -30,35 +33,37 @@ nav {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  justify-content: space-between; /* Sicherstellen, dass der Button rechts ausgerichtet ist */
+  justify-content: space-between; 
   align-items: center;
 }
 
 nav .navright button {
-  font-size: 12px; /* Kleinere Schriftgröße im mobilen Bereich */
-  padding: 8px 12px; /* Etwas mehr Platz für den Button */
+  font-size: 12px; 
+  padding: 8px 12px; 
 }
 
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .navright {
-  display: flex;
-  gap: 20px; 
-  flex-direction: row; 
-  justify-content: center;
-  align-items: center; 
+  display: none;
+  gap: 20px;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .menu-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  display: none;
+  z-index: 10;
 }
 
 .menu-toggle img {
@@ -66,9 +71,9 @@ nav .navright button {
 }
 
 main {
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main p {
@@ -119,13 +124,17 @@ button {
   width: fit-content;
   gap: 10px;
   padding: 20px;
-  
 }
 
 button:hover {
   background-color: var(--white_color);
   color: var(--primary_color);
 }
+
+button:focus {
+  outline: 2px solid var(--primary_color);
+  outline-offset: 2px;
+} 
 
 a {
   text-decoration: none;
@@ -143,94 +152,167 @@ h2 {
 
 h3 {
   color: var(--primary_color);
-  }
+}
 
 .level {
-  display: grid;
-  grid-template-columns: (1fr, 1fr);
+  display: flex;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding: 20px;
   justify-content: center;
+  align-items: center;
 }
-
 
 .grid-container {
   margin-bottom: 10px;
   display: grid;
   gap: 10px;
-  grid-template-columns:150px 150px ;
-  grid-template-rows:60px 60px 1px;
-  grid-template-areas: "box-1-Area box-2-Area"
-                       "box-3-Area box-4-Area"
-                       ". box-4-Area";
+  grid-template-columns: 150px 150px;
+  grid-template-rows: 60px 60px 1px;
+  grid-template-areas:
+    "box-1-Area box-2-Area"
+    "box-3-Area box-4-Area"
+    ". box-4-Area";
+}
+
+/* Mobile-first styles */
+/* === Base Styles (Mobile First: bis 480px) === */
+body {
+  font-size: 14px;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+}
+
+.element {
+  padding-left: 1rem;
+}
+
+footer {
+  width: 100%;
+}
+
+#allrights {
+  text-align: start;
+}
+
+input,
+textarea {
+  width: 45%; 
+  padding: 10px;
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  box-sizing: border-box; 
+}
+
+/* === Ab 481px: Mobile Landscape Ansicht === */
+@media (min-width: 481px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 30px;
+  }
+
+  .testimonials {
+    align-items: center;
+  }
 }
 
 @media (max-width: 768px) {
-  .team {
-    flex-direction: column; /* Stapelt Bild/Logo über dem Text */
-    align-items: center; /* Zentriert die Inhalte */
-    text-align: center;
-  }
-
   .image-container {
-    width: 150px; /* Kleinere Größe für kleinere Bildschirme */
-    margin-left: 0; /* Zentrierung */
+    display: flex;
+    justify-content: center;
   }
 
   #pic {
-    width: 100%;
+    width: 50%;
     border-radius: 40px;
     position: relative;
-    left: 80%;
   }
 
   #brand {
-    margin-top: 10px;
-    position: relative;
-    left: 100%;
-    transform: translateX(-50%); /* Zentriert das Logo */
-    width: 60px; /* Kleinere Logo-Größe für mobile Ansicht */
+    display: flex;
+    margin-top: 20px;
+    padding-left: 40%;
+    width: 60px; 
   }
 
   .text-content {
     max-width: 90%;
-    margin: 20px auto; /* Zentrierung des Texts */
+    margin: 20px auto; 
     text-align: center;
     align-items: center;
   }
 }
 
-
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 1rem;
   align-items: center;
 }
 
-.box-1 ,.box-2 ,.box-3 ,.box-4{
+
+  
+  .menu-toggle {
+    display: block; 
+    position: absolute;/* show on mobile */
+    justify-content: center;
+    top: 100px;
+  }
+
+
+  .navright {
+    display: none; /* hide nav links initially */
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 5;
+  }
+
+
+  .navright.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.box-1,
+.box-2,
+.box-3,
+.box-4 {
   background-color: #ffffff;
   text-align: center;
   border-radius: 2px;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);  
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.grid-container p{
+.grid-container p {
   font-size: 10px;
   font-weight: bold;
 }
 
-.box-1{
-
+.box-1 {
   grid-area: box-1-Area;
 }
-.box-2{
+.box-2 {
   grid-area: box-2-Area;
 }
-.box-3{
+.box-3 {
   grid-area: box-3-Area;
 }
-.box-4{
+.box-4 {
   grid-area: box-4-Area;
 }
 
@@ -242,27 +324,27 @@ h3 {
   display: grid;
   gap: 10px;
   grid-template-columns: 350px;
-  grid-auto-flow: 80px 70px 30px;
-  grid-template-areas: 
-                      "first-box-area" 
-                      "second-box-area"
-                      "third-box-area" 
-                      "fourth-box-area"
-                      "fifth-box-area" 
-                      "sixth-box-area";
+  grid-auto-rows: min-content;
+  grid-template-areas:
+    "first-box-area"
+    "second-box-area"
+    "third-box-area"
+    "fourth-box-area"
+    "fifth-box-area"
+    "sixth-box-area";
 }
 
-.main-container img{
+.main-container img {
   width: 8px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-.main-container p{
+.main-container p {
   font-size: 10px;
   font-family: Martel Sans, sans-serif;
 }
-.main-container > button{
+.main-container > button {
   display: flex;
   justify-content: center;
   width: 150px;
@@ -270,33 +352,35 @@ h3 {
   margin-bottom: 20px;
 }
 
-.first-box, .second-box, .third-box, .fourth-box, .fifth-box, .sixth-box{ 
+.grid-box {
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
   display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
-.first-box{
+.first-box {
   grid-area: first-box-area;
 }
 
-.second-box{
+.second-box {
   grid-area: second-box-area;
 }
 
-.third-box{
+.third-box {
   grid-area: third-box-area;
 }
 
-.fourth-box{
+.fourth-box {
   grid-area: fourth-box-area;
 }
 
-.fifth-box{
+.fifth-box {
   grid-area: fifth-box-area;
 }
 
-.sixth-box{
+.sixth-box {
   grid-area: sixth-box-area;
 }
 
@@ -304,32 +388,32 @@ section {
   padding: 20px;
 }
 
-.sub-container{
-  margin-top:10px ;
+.sub-container {
+  margin-top: 10px;
   display: grid;
   gap: 10px;
   grid-template-columns: 350px;
-  grid-auto-flow: 80px 70px 30px;
-  grid-template-areas: 
-                      "seventh-box-area" 
-                      "eighth-box-area"
-                      "ninth-box-area" 
-                      "tenth-box-area"
-                      "eleventh-box-area" 
-                      "twelvth-box-area";
+  grid-auto-rows: min-content;
+  grid-template-areas:
+    "seventh-box-area"
+    "eighth-box-area"
+    "ninth-box-area"
+    "tenth-box-area"
+    "eleventh-box-area"
+    "twelveth-box-area";
 }
 
-.sub-container img{
+.sub-container img {
   width: 8px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-.sub-container p{
+.sub-container p {
   font-size: 10px;
   font-family: Martel Sans, sans-serif;
 }
-.sub-container > button{
+.sub-container > button {
   display: flex;
   justify-content: center;
   width: 150px;
@@ -337,35 +421,39 @@ section {
   margin-bottom: 20px;
 }
 
-.seventh-box, .eighth-box, .ninth-box, .tenth-box, .eleventh-box, .twelveth-box{ 
+.seventh-box,
+.eighth-box,
+.ninth-box,
+.tenth-box,
+.eleventh-box,
+.twelveth-box {
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
   display: flex;
-
 }
 
-.seventh-box{
+.seventh-box {
   grid-area: seventh-box-area;
 }
 
-.eleventh-box{
+.eighth-box {
   grid-area: eighth-box-area;
 }
 
-.eighth-box{
+.ninth-box {
   grid-area: ninth-box-area;
 }
 
-.ninth-box{
+.tenth-box {
   grid-area: tenth-box-area;
 }
 
-.tenth-box{
+.eleventh-box {
   grid-area: eleventh-box-area;
 }
 
-.twelveth-box{
-  grid-area: twelvth-box-area;
+.twelveth-box {
+  grid-area: twelveth-box-area;
 }
 
 #monials {
@@ -376,22 +464,21 @@ section {
 }
 
 .testimonials {
-    background-color: var(--white_color);
-    border-radius: 12px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    padding: 30px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    margin: 20px auto; 
-    max-width: 960px; 
-    width: 100%; 
-    box-sizing: border-box; 
+  background-color: var(--white_color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 960px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #user {
-  
   align-self: center;
   width: 50%;
   border-radius: 100%;
@@ -410,57 +497,32 @@ footer {
   text-align: start;
 }
 
-/* Mobile-first styles */
-/* === Base Styles (Mobile First: bis 480px) === */
-body {
-  font-size: 14px;
-}
-
-.nav-mobil {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-}
-
-.hero h1 {
-  font-size: 1.8rem;
-}
-
-/* === Ab 481px: Mobile Landscape Ansicht === */
-@media (min-width: 481px) {
+/* === Ab 768px: Tablets (Portrait) === */
+@media (min-width: 768px) {
   body {
     font-size: 16px;
   }
 
-  .nav-mobil {
-    justify-content: space-between;
+  .element {
+    padding-left: 150px;
   }
 
-  .hero h1 {
-    font-size: 2rem;
-  }
-  
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-    padding-left: 30px;
-  }
-
-  .testimonials {
-    align-items: center;
-  }
-
-}
-
-/* === Ab 768px: Tablets (Portrait) === */
-@media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
 
   .nav-mobil {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }
 
   .hero {
@@ -473,23 +535,24 @@ body {
 
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
-   
-    
   }
 
-  .box-1 ,.box-2 ,.box-3 ,.box-4{
+  .box-1,
+  .box-2,
+  .box-3,
+  .box-4 {
     background-color: #ffffff;
     text-align: center;
     border-radius: 2px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05); 
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
     width: 200px;
   }
-  
-  .grid-container p{
+
+  .grid-container p {
     font-size: 10px;
     font-weight: bold;
   }
-  
+
   nav {
     flex-direction: row; /* Menü & Logo nebeneinander */
     justify-content: space-between; /* Logo links, Menü rechts */
@@ -503,7 +566,10 @@ body {
   }
 
   .navright {
+    display: flex;
+    flex-direction: row;
     justify-content: flex-end; /* Links + Button nach rechts */
+    align-items: center;
     gap: 30px; /* Mehr Abstand zwischen Links & Button */
   }
 
@@ -511,73 +577,72 @@ body {
     display: grid;
     gap: 10px;
     grid-template-columns: 350px;
-    grid-auto-flow: 80px 70px 30px;
-    grid-template-areas: 
-                        "first-box-area second-box-area"
-                        "third-box-area fourth-box-area"
-                        "fifth-box-area sixth-box-area";
+    grid-auto-rows: min-content;
+    grid-template-areas:
+      "first-box-area second-box-area"
+      "third-box-area fourth-box-area"
+      "fifth-box-area sixth-box-area";
   }
 
-  .sub-container{
-    margin-top:10px ;
+  .sub-container {
+    margin-top: 10px;
     display: grid;
     gap: 10px;
     grid-template-columns: 350px;
-    grid-auto-flow: 80px 70px 30px;
-    grid-template-areas: 
-                        "seventh-box-area eighth-box-area"
-                        "ninth-box-area tenth-box-area"
-                        "eleventh-box-area twelvth-box-area";
+    grid-auto-rows: min-content;
+    grid-template-areas:
+      "seventh-box-area eighth-box-area"
+      "ninth-box-area tenth-box-area"
+      "eleventh-box-area twelveth-box-area";
   }
 
-.team {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  align-items: left;
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-}
+  .team {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: left;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
 
-.image-container {
-  position: relative;
-  width: 200px;
-}
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+    margin-left: -0px;
+    max-width: 100%;
+  }
 
-#pic {
-  width: 100%;
-  border-radius: 40px;
-  margin-left: px;
-}
+  #pic {
+    width: 200%;
+    border-radius: 40px;
+  }
 
-#brand {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 80px;
-  margin-left: 20px;
-}
+  #brand {
+    width: 80px;
+    margin-left: -200px;
+  }
 
-.text-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  max-width: 500px;
-  text-align: left;
-  margin-left: 50px;
-  margin-top: 120px;
-}
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    max-width: 500px;
+    text-align: left;
+  }
 
-.testimonials {
-max-width: 300px;
-}
-
+  .testimonials {
+    max-width: 300px;
+  }
 }
 
 /* === Ab 1024px: Tablets (Landscape) & kleine Laptops === */
 @media (min-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+
   .container {
     max-width: 960px;
   }
@@ -591,97 +656,96 @@ max-width: 300px;
   }
 
   .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-    padding-left: 150px;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 0%;
   }
 
-  .box-1 ,.box-2 ,.box-3 ,.box-4{
+  .box-1,
+  .box-2,
+  .box-3,
+  .box-4 {
     background-color: #ffffff;
     text-align: center;
     border-radius: 2px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05); 
-    width:200px ;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
+    width: 200px;
   }
-  
-  .grid-container p{
+
+  .grid-container p {
     font-size: 10px;
     font-weight: bold;
   }
-  
 
   .main-container {
     grid-template-columns: repeat(2, 1fr);
   }
 
   nav {
-    flex-direction: row; /* Menü & Logo nebeneinander */
-    justify-content: space-between; /* Abstand zwischen Logo & Menü */
+    flex-direction: row; 
+    justify-content: space-between; 
     align-items: center;
     padding: 15px 50px;
   }
 
   .logo {
-    justify-content: flex-start; /* Logo nach links */
+    justify-content: flex-start; 
     margin-bottom: 0;
   }
 
   .navright {
-    justify-content: flex-end; /* Links + Button nach rechts */
+    justify-content: flex-end; 
   }
 
   .main-container {
     display: grid;
     gap: 10px;
     grid-template-columns: 500px 500px;
-    grid-auto-flow: 80px 70px 30px;
-    grid-template-areas: 
-                        "first-box-area second-box-area"
-                        "third-box-area fourth-box-area"
-                        "fifth-box-area sixth-box-area";
+    grid-auto-rows: min-content;
+    grid-template-areas:
+      "first-box-area second-box-area"
+      "third-box-area fourth-box-area"
+      "fifth-box-area sixth-box-area";
   }
 
-  .sub-container{
-    margin-top:10px ;
+  .sub-container {
+    margin-top: 10px;
     display: grid;
     gap: 10px;
     grid-template-columns: 350px;
-    grid-auto-flow: 80px 70px 30px;
-    grid-template-areas: 
-                        "seventh-box-area eighth-box-area"
-                        "ninth-box-area tenth-box-area"
-                        "eleventh-box-area twelvth-box-area";
+    grid-auto-rows: min-content;
+    grid-template-areas:
+      "seventh-box-area eighth-box-area"
+      "ninth-box-area tenth-box-area"
+      "eleventh-box-area twelveth-box-area";
   }
 
   .team {
     display: grid;
     grid-template-columns: 100px 1fr;
-    /* justify-content: flex-start; */
     align-items: left;
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
     position: relative;
   }
-  
+
   .image-container {
-    position: relative;
-    width: 200px;
-    margin-left: -90px; 
+    flex-direction: column;
+    align-items: center;
+    margin-left: -90px;
+    max-width: 100%;
   }
-  
+
   #pic {
-    width: 100%;
+    width: 200%;
     border-radius: 40px;
   }
-  
+
   #brand {
-    position: absolute;
-    top: 0;
-    left: 100%;
     width: 80px;
-    margin-left: 20px;
+    margin-left: 0px;
   }
-  
+
   .text-content {
     display: flex;
     flex-direction: column;
@@ -689,15 +753,12 @@ max-width: 300px;
     align-items: flex-start;
     max-width: 500px;
     text-align: left;
-    margin-left: 10px;
-    margin-top: 80px;
   }
-  
-  .testimonials {
-  max-width: 300px;
-    }
 
-  
+  .testimonials {
+    max-width: 300px;
+  }
+
   .footer {
     position: relative;
     bottom: 0;
@@ -709,26 +770,21 @@ max-width: 300px;
     border-top-left-radius: 90px;
     text-align: start;
     padding-left: 50px;
-    
   }
-  
-  
 
   #allrights {
     text-align: center;
-    }
+  }
 
-    input, textarea {
-      width: 45%; /* Setzt die Breite auf 100%, sodass alle Felder gleich breit sind */
-      padding: 10px; /* Padding für mehr Platz */
-      border-radius: 5px; /* Abgerundete Ecken */
-      border: 1px solid #ccc; /* Optional: Border für das Input-Feld */
-      box-sizing: border-box; /* Verhindert, dass Padding und Border die Gesamtbreite beeinflussen */
-    }
-
+  input,
+  textarea {
+    width: 45%; 
+    padding: 10px; 
+    border-radius: 5px;
+    border: 1px solid #ccc; 
+    box-sizing: border-box;
+  }
 }
-
-
 
 /* === Ab 1280px: Große Desktops === */
 @media (min-width: 1280px) {
@@ -741,23 +797,22 @@ max-width: 300px;
   }
 
   .grid-container {
-    grid-template-columns: repeat(4, 1fr);
-    padding-left: 360px;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 0%;
   }
 
-  .box-1 ,.box-2 ,.box-3 ,.box-4{
+  .grid.box {
     background-color: #ffffff;
     text-align: center;
     border-radius: 2px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05); 
-    width:200px ;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05);
+    width: 200px;
   }
-  
-  .grid-container p{
+
+  .grid-container p {
     font-size: 12px;
     font-weight: bold;
   }
-  
 
   .main-container {
     grid-template-columns: repeat(3, 1fr);
@@ -775,55 +830,54 @@ max-width: 300px;
     display: grid;
     gap: 10px;
     grid-template-columns: 500px 500px;
-    grid-auto-flow: 80px 70px 30px;
-    grid-template-areas: 
-                        "first-box-area second-box-area"
-                        "third-box-area fourth-box-area"
-                        "fifth-box-area sixth-box-area";
+    grid-auto-flow: min-content;
+    grid-template-areas:
+      "first-box-area second-box-area"
+      "third-box-area fourth-box-area"
+      "fifth-box-area sixth-box-area";
   }
 
-  .sub-container{
-    margin-top:10px ;
+  .sub-container {
+    margin-top: 10px;
     display: grid;
     gap: 10px;
     grid-template-columns: 350px;
-    grid-auto-flow: 80px 70px 30px;
-    grid-template-areas: 
-                        "seventh-box-area eighth-box-area"
-                        "ninth-box-area tenth-box-area"
-                        "eleventh-box-area twelvth-box-area";
+    grid-auto-flow: min-content;
+    grid-template-areas:
+      "seventh-box-area eighth-box-area"
+      "ninth-box-area tenth-box-area"
+      "eleventh-box-area twelveth-box-area";
   }
 
   .team {
     display: grid;
     grid-template-columns: 100px 1fr;
-    /* justify-content: flex-start; */
     align-items: left;
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
     position: relative;
   }
-  
+
   .image-container {
     position: relative;
     width: 200px;
-    margin-left: -300px; /* Negativer Margin für Bild */
+    max-width: 100%;
+    margin-left: -300px; 
   }
-  
+
   #pic {
-    width: 100%;
+    width: 200%;
     border-radius: 40px;
   }
-  
+
   #brand {
-    position: absolute;
-    top: 0;
-    left: 100%;
     width: 80px;
-    margin-left: 20px;
+    margin-left: 0px;
+    margin-top: -80px;
   }
-  
+
+
   .text-content {
     display: flex;
     flex-direction: column;
@@ -834,23 +888,9 @@ max-width: 300px;
     margin-left: -200px;
     margin-top: 80px;
   }
-  
-  .testimonials {
-  max-width: 300px;
-  
-  }
 
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--main_body_color);
-    color: var(--white_color);
-    padding: 1rem;
-    border-top-left-radius: 90px;
-    text-align: start;
-    padding-left: 50px;
+  .testimonials {
+    max-width: 300px;
   }
 
   .footer {
@@ -864,21 +904,18 @@ max-width: 300px;
     border-top-left-radius: 90px;
     text-align: start;
     padding-left: 50px;
-    
   }
-  
-  
 
   #allrights {
     text-align: center;
-    }
+  }
 
-    input, textarea {
-      width: 45%; /* Setzt die Breite auf 100%, sodass alle Felder gleich breit sind */
-      padding: 10px; /* Padding für mehr Platz */
-      border-radius: 5px; /* Abgerundete Ecken */
-      border: 1px solid #ccc; /* Optional: Border für das Input-Feld */
-      box-sizing: border-box; /* Verhindert, dass Padding und Border die Gesamtbreite beeinflussen */
-    }
-
+  input,
+  textarea {
+    width: 45%; /* Setzt die Breite auf 100%, sodass alle Felder gleich breit sind */
+    padding: 10px; /* Padding für mehr Platz */
+    border-radius: 5px; /* Abgerundete Ecken */
+    border: 1px solid #ccc; /* Optional: Border für das Input-Feld */
+    box-sizing: border-box; /* Verhindert, dass Padding und Border die Gesamtbreite beeinflussen */
+  }
 }
