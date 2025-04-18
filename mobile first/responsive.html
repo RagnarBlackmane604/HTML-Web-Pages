@@ -241,5 +241,14 @@
          <p id="allrights">&copy; 2024 Your Competitive Programming Platform. All rights reserved.</p>
       
     </footer>
+
+    <script>
+      const toggle = document.querySelector(".menu-toggle");
+      const navright = document.querySelector(".navright");
+    
+      toggle.addEventListener("click", () => {
+        navright.classList.toggle("open");
+      });
+    </script>
   </body>
 </html>
