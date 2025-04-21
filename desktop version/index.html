@@ -198,54 +198,56 @@
       </div>
     </section>
 
-    <section >
-      
-         <h2 id="monials">Testimonials</h2>
-      
-      <div class="testimonials">
-         <div>
-         <p>This guy is an amazing frontend developer that delivered the task exactly how we need it, do your self a favor and hire him, you will not be disappointed by the work delivered. He will go the extra mile to make sure you are happy <br> with your project. I will surely work again with him! </p>
-         </div>
-         <img id="user" src="https://randomuser.me/api/portraits/women/44.jpg">
-         <h4>June Cha</h4>
-         <p>Software Engineer</p>
-         <!-- <p>"This platform is an absolute game-changer for competitive programmers. The
-            extensive range of problems and challenges offered here truly hones your skills
-            and prepares you for any coding competition. With detailed solutions and an
-            active community, it's the perfect environment to sharpen your coding
-            prowess."</p> -->
-     </div> 
-
+    <section>
+      <h2 id="monials">Testimonials</h2>
+    
+      <div class="testimonials" id="testimonial-box">
+        <div id="user-text">
+          <p>This guy is an amazing frontend developer that delivered the task exactly how we need it...</p>
+        </div>
+        <img id="user-photo" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Photo">
+        <h4 id="user-name">June Cha</h4>
+        <p id="user-position">Software Engineer</p>
+    
+        <div class="onclick">
+          <button onclick="prevTestimonial()">Previous</button>
+          <button onclick="nextTestimonial()">Next</button>
+        </div>
+      </div>
     </section>
 
     <footer class="footer">
     <div>
          <h2 id="contact">Contact us</h2>
-         <div>
+         <form id="contactForm">
+          <div>
          <label for="Name">Name</label> <br>
          <input type="name" id="Name" placeholder="Your Name"></input>
+         <div id="error-Name" class="error-message"></div>
          </div>
-         <div><label for="Email">Email</label> <br>
+
+         <div>
+          <label for="Email">Email</label> <br>
          <input type="email" id="Email" placeholder="Your Email"></input> 
+         <div id="error-Email" class="error-message"></div>
       </div>
       <div>
          <label for="text">Message</label> <br>
          <textarea name="text" id="Message" placeholder="Your Message" rows="4" cols="20"></textarea>
+         <div id="error-Message" class="error-message"></div>
+        </div>
+         
          <br>
          <button type="submit">Submit</button>
+         </form>
         </div>
     </div>
-         <p id="allrights">&copy; 2024 Your Competitive Programming Platform. All rights reserved.</p>
-      
-    </footer>
 
-    <script>
-      const toggle = document.querySelector(".menu-toggle");
-      const navright = document.querySelector(".navright");
-    
-      toggle.addEventListener("click", () => {
-        navright.classList.toggle("open");
-      });
-    </script>
+      <p id="allrights">© <span id="year"></span> Your Competitive Programming Platform All rights reserved.</p>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js" defer></script>
+
   </body>
 </html>

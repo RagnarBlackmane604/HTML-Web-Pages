@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeCLA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --primary_color: #8053ff;
+        --main_body_color: #23155b;
+        --gray_light_color: #817d8e;
+        --white_color: #f4f4f4;
+        --backgroundcolor: #d9d5d5;
+      }
+
+      .text-primary {
+        color: var(--primary_color);
+      }
+
+      .bg-mainBody {
+        background-color: var(--main_body_color);
+      }
+
+      .bg-lightWhite {
+        background-color: var(--white_color);
+      }
+
+      .bg-background {
+        background-color: var(--backgroundcolor);
+      }
+
+      .font-martel {
+        font-family: "Martel Sans", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-background text-black text-base font-sans">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-5 bg-background">
+      <div class="text-xl font-bold text-primary">CodeCLA</div>
+      <div class="flex gap-4 items-center text-sm">
+        <a href="#about" class="hover:text-primary">About</a>
+        <a href="#features" class="hover:text-primary">Features</a>
+        <a href="#contact" class="hover:text-primary">Contact</a>
+        <button class="bg-primary text-lightWhite px-4 py-2 rounded hover:bg-lightWhite hover:text-primary">Sign Up</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex flex-col items-center text-center p-10 max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4">Level Up Your Coding with <span class="highlight text-primary">CodeCLA</span></h1>
+      <p class="text-lg max-w-xl mb-6">Join thousands of coders sharpening their skills through contests, projects, and real developer feedback.</p>
+      <div class="flex gap-4">
+        <button class="bg-primary text-lightWhite px-4 py-2 rounded hover:bg-lightWhite hover:text-primary">Get Started</button>
+        <button class="bg-white text-primary px-4 py-2 rounded border border-primary hover:bg-primary hover:text-white">Learn More</button>
+      </div>
+    </section>
+
+    <!-- Coders Section -->
+    <section class="px-6 py-10">
+      <h2 class="text-primary text-xl font-semibold text-center mb-8">Coders Section</h2>
+      <div class="grid grid-cols-2 gap-4 justify-center max-w-4xl mx-auto">
+        <div class="bg-background rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Coder 1 info goes here...</p>
+        </div>
+        <div class="bg-background rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Coder 2 info goes here...</p>
+        </div>
+        <div class="bg-background rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Coder 3 info goes here...</p>
+        </div>
+        <div class="bg-background rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Coder 4 info goes here...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Managers Section -->
+    <section class="px-6 py-10">
+      <h2 class="text-primary text-xl font-semibold text-center mb-8">Manager Section</h2>
+      <div class="grid grid-cols-2 gap-4 justify-center max-w-4xl mx-auto">
+        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Manager 1 info here...</p>
+        </div>
+        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Manager 2 info here...</p>
+        </div>
+        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Manager 3 info here...</p>
+        </div>
+        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
+          <p class="text-xs font-martel">Manager 4 info here...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team py-10 px-6 grid grid-cols-[100px_1fr] gap-6 max-w-4xl mx-auto">
+      <div class="image-container">
+        <img id="pic" src="https://via.placeholder.com/120" alt="Team photo" class="rounded-full w-40" />
+      </div>
+      <div class="text-content flex flex-col justify-start">
+        <h2 class="text-black text-xl font-bold mb-2">Meet Our Team</h2>
+        <p class="text-sm font-martel">We are a passionate group of engineers, developers, and managers who built CodeCLA for the community. From organizing contests to building tools for learning, we're here for coders at every level.</p>
+        <img id="brand" src="https://via.placeholder.com/80x40" alt="Brand logo" class="mt-4 w-20" />
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="monials" class="py-12 px-6 bg-background">
+      <div class="testimonials bg-lightWhite rounded-xl shadow-lg px-6 py-8 max-w-lg mx-auto text-center">
+        <img id="user" src="https://via.placeholder.com/100" alt="User testimonial" class="mx-auto rounded-full w-24 mb-4" />
+        <p class="text-sm font-martel italic">"This platform is a game-changer! Solved over 300 problems and leveled up my coding skills faster than I expected."</p>
+        <h3 class="text-primary mt-4 text-base font-semibold">Jane Developer</h3>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-10 px-6 max-w-3xl mx-auto">
+      <h2 class="text-xl text-primary font-semibold text-center mb-6">Get in Touch</h2>
+      <form class="flex flex-col gap-4 items-center">
+        <input type="text" placeholder="Your Name" class="w-1/2 p-2 rounded border border-gray-300 text-sm" />
+        <input type="email" placeholder="Your Email" class="w-1/2 p-2 rounded border border-gray-300 text-sm" />
+        <textarea rows="4" placeholder="Your Message" class="w-1/2 p-2 rounded border border-gray-300 text-sm"></textarea>
+        <button class="bg-primary text-lightWhite px-4 py-2 rounded text-sm hover:bg-lightWhite hover:text-primary">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-mainBody text-lightWhite py-6 px-10 rounded-tl-[90px]">
+      <p class="text-sm mb-2">Contact us: <a href="mailto:contact@codecla.com" class="underline">contact@codecla.com</a></p>
+      <p id="allrights" class="text-center text-xs mt-4">&copy; 2025 CodeCLA. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
