@@ -3,137 +3,193 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeCLA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      :root {
-        --primary_color: #8053ff;
-        --main_body_color: #23155b;
-        --gray_light_color: #817d8e;
-        --white_color: #f4f4f4;
-        --backgroundcolor: #d9d5d5;
-      }
-
-      .text-primary {
-        color: var(--primary_color);
-      }
-
-      .bg-mainBody {
-        background-color: var(--main_body_color);
-      }
-
-      .bg-lightWhite {
-        background-color: var(--white_color);
-      }
-
-      .bg-background {
-        background-color: var(--backgroundcolor);
-      }
-
-      .font-martel {
-        font-family: "Martel Sans", sans-serif;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Mukta:wght@300&family=Outfit:wght@100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <title>CodeCLA</title>
   </head>
-
-  <body class="bg-background text-black text-base font-sans">
-
-    <!-- Navbar -->
-    <nav class="flex justify-between items-center p-5 bg-background">
-      <div class="text-xl font-bold text-primary">CodeCLA</div>
-      <div class="flex gap-4 items-center text-sm">
-        <a href="#about" class="hover:text-primary">About</a>
-        <a href="#features" class="hover:text-primary">Features</a>
-        <a href="#contact" class="hover:text-primary">Contact</a>
-        <button class="bg-primary text-lightWhite px-4 py-2 rounded hover:bg-lightWhite hover:text-primary">Sign Up</button>
+  <body class="bg-gray-200 text-black text-base font-sans">
+    <nav class="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-gray-200 gap-4 md:gap-0">
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.svg" alt="CodeCLA-Logo" width="40" />
+        <h5 class="font-semibold text-lg">CodeCLA</h5>
+      </div>
+      <div class="flex flex-col md:flex-row items-center gap-4">
+        <div class="flex flex-col md:flex-row gap-3 items-center">
+          <a href="assets/forcoders.html" class="text-black">For coders</a>
+          <a href="assets/fordevelopers.html" class="text-black">For developers</a>
+        </div>
+        <button class="bg-purple-600 text-white text-sm px-3 py-2 rounded hover:bg-white hover:text-purple-600">Join Now</button>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero flex flex-col items-center text-center p-10 max-w-3xl mx-auto">
-      <h1 class="text-4xl font-bold mb-4">Level Up Your Coding with <span class="highlight text-primary">CodeCLA</span></h1>
-      <p class="text-lg max-w-xl mb-6">Join thousands of coders sharpening their skills through contests, projects, and real developer feedback.</p>
+    <main class="flex flex-col items-center text-center px-4 py-12 max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4">The Place for Competitive Programmers</h1>
+      <p class="text-lg mb-6">
+        CodeCLA is where programmers participate in programming contests,
+        solve algorithm and data structure challenges and become part of an
+        awesome community.
+      </p>
       <div class="flex gap-4">
-        <button class="bg-primary text-lightWhite px-4 py-2 rounded hover:bg-lightWhite hover:text-primary">Get Started</button>
-        <button class="bg-white text-primary px-4 py-2 rounded border border-primary hover:bg-primary hover:text-white">Learn More</button>
+        <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-white hover:text-purple-600">Become a coder</button>
+        <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-white hover:text-purple-600">Become a manager</button>
       </div>
-    </section>
+    </main>
 
-    <!-- Coders Section -->
-    <section class="px-6 py-10">
-      <h2 class="text-primary text-xl font-semibold text-center mb-8">Coders Section</h2>
-      <div class="grid grid-cols-2 gap-4 justify-center max-w-4xl mx-auto">
-        <div class="bg-background rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Coder 1 info goes here...</p>
+    <section class="text-center px-6 py-12">
+      <h2 class="text-purple-600 text-2xl font-semibold mb-8">Practice to level-up</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center">
+        <div class="bg-white p-4 rounded shadow text-xs font-bold">
+          <p>1K</p>
+          <p>Problems for practice</p>
         </div>
-        <div class="bg-background rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Coder 2 info goes here...</p>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold">
+          <p>100+</p>
+          <p>Coders</p>
         </div>
-        <div class="bg-background rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Coder 3 info goes here...</p>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold">
+          <p>10</p>
+          <p>Programming languages</p>
         </div>
-        <div class="bg-background rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Coder 4 info goes here...</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Managers Section -->
-    <section class="px-6 py-10">
-      <h2 class="text-primary text-xl font-semibold text-center mb-8">Manager Section</h2>
-      <div class="grid grid-cols-2 gap-4 justify-center max-w-4xl mx-auto">
-        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Manager 1 info here...</p>
-        </div>
-        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Manager 2 info here...</p>
-        </div>
-        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Manager 3 info here...</p>
-        </div>
-        <div class="bg-lightWhite rounded shadow p-4 flex items-center">
-          <p class="text-xs font-martel">Manager 4 info here...</p>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold">
+          <p>130K</p>
+          <p>Submissions</p>
         </div>
       </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team py-10 px-6 grid grid-cols-[100px_1fr] gap-6 max-w-4xl mx-auto">
-      <div class="image-container">
-        <img id="pic" src="https://via.placeholder.com/120" alt="Team photo" class="rounded-full w-40" />
+    <section class="px-6 py-12">
+      <h3 class="text-purple-600 text-lg">For coders</h3>
+      <h1 class="text-2xl font-bold mb-4">What you will <span class="text-purple-600">gain</span></h1>
+      <p class="mb-6 max-w-2xl">You are a coder who wants to level-up his skills in coding and problem solving? Here is what we provide.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p class="text-xs">Access a rich library of practice problems, algorithms, and data structures to enhance your skills.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p class="text-xs">Compete in regularly scheduled contests against talent from around the globe.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p class="text-xs">Receive personalized feedback to improve your problem-solving abilities.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p class="text-xs">Connect with like-minded individuals, form teams, and tackle challenges together.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p class="text-xs">Track your progress and climb the ranks on our leaderboard.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p class="text-xs">Detailed solutions for problems.</p>
+        </div>
       </div>
-      <div class="text-content flex flex-col justify-start">
-        <h2 class="text-black text-xl font-bold mb-2">Meet Our Team</h2>
-        <p class="text-sm font-martel">We are a passionate group of engineers, developers, and managers who built CodeCLA for the community. From organizing contests to building tools for learning, we're here for coders at every level.</p>
-        <img id="brand" src="https://via.placeholder.com/80x40" alt="Brand logo" class="mt-4 w-20" />
+      <div class="mt-6 text-center">
+        <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-white hover:text-purple-600">Join coders community</button>
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="monials" class="py-12 px-6 bg-background">
-      <div class="testimonials bg-lightWhite rounded-xl shadow-lg px-6 py-8 max-w-lg mx-auto text-center">
-        <img id="user" src="https://via.placeholder.com/100" alt="User testimonial" class="mx-auto rounded-full w-24 mb-4" />
-        <p class="text-sm font-martel italic">"This platform is a game-changer! Solved over 300 problems and leveled up my coding skills faster than I expected."</p>
-        <h3 class="text-primary mt-4 text-base font-semibold">Jane Developer</h3>
+    <section class="px-6 py-12">
+      <h3 class="text-purple-600 text-lg">For managers</h3>
+      <h1 class="text-2xl font-bold mb-4">What you will <span class="text-purple-600">access</span></h1>
+      <p class="mb-6 max-w-2xl">Are you a team leader or recruiter looking to assess candidates' skills efficiently? Here's how we help you design powerful coding challenges.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p>Craft tailored coding challenges suited to your needs and objectives.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p>Design challenges that align perfectly with your recruitment criteria.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p>Choose from a wide range of problem types including algorithmic, data structures, puzzles, and more.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p>Ergonomic tools for challenge design.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p>Collaborate with colleagues or peers in creating and refining challenges.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-xs font-bold flex items-start gap-2">
+          <img src="./assets/ok.svg" alt="ok logo" class="w-4" />
+          <p>Access dedicated support from our team of experts.</p>
+        </div>
+      </div>
+    
+      <div class="mt-6 text-center">
+        <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-white hover:text-purple-600">Join managers community</button>
       </div>
     </section>
+    
+          
+<section>
+  <div class="team flex flex-col md:flex-row items-center gap-2 px-6 py-12 md:-ml-32 relative overflow-hidden">
+    <div class="image-container mb-8 relative">
+      <img id="pic" src="assets/team.svg" alt="Team image" class="w-1/2 h-auto mx-auto md:mx-0 rounded" />
+    </div>
 
-    <!-- Contact Form -->
-    <section id="contact" class="py-10 px-6 max-w-3xl mx-auto">
-      <h2 class="text-xl text-primary font-semibold text-center mb-6">Get in Touch</h2>
-      <form class="flex flex-col gap-4 items-center">
-        <input type="text" placeholder="Your Name" class="w-1/2 p-2 rounded border border-gray-300 text-sm" />
-        <input type="email" placeholder="Your Email" class="w-1/2 p-2 rounded border border-gray-300 text-sm" />
-        <textarea rows="4" placeholder="Your Message" class="w-1/2 p-2 rounded border border-gray-300 text-sm"></textarea>
-        <button class="bg-primary text-lightWhite px-4 py-2 rounded text-sm hover:bg-lightWhite hover:text-primary">Send Message</button>
-      </form>
-    </section>
+    <div class="text-content md:-mt-24 md:-ml-72 text-center md:text-left md:items-start max-w-lg flex flex-col">
+      <img id="brand" src="assets/logo.svg" alt="Brand logo" class="mx-auto md:mx-0 mb-4" />
+      <h2 class="text-xl font-semibold mb-4">Brought to you by CLA</h2>
+      <p class="mb-4">Join the Ultimate Hub for Competitive Programmers and reach growth and excellence in competitive programming.</p>
+      <p>Coding challenges are made simple by our platform. Access a dashboard of tools for high-quality challenge design.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer bg-mainBody text-lightWhite py-6 px-10 rounded-tl-[90px]">
-      <p class="text-sm mb-2">Contact us: <a href="mailto:contact@codecla.com" class="underline">contact@codecla.com</a></p>
-      <p id="allrights" class="text-center text-xs mt-4">&copy; 2025 CodeCLA. All rights reserved.</p>
-    </footer>
+<section>
+  <h2 id="monials" class="text-center text-2xl font-bold text-purple-600 mb-6">Testimonials</h2>
 
+  <div class="testimonials bg-white flex flex-col justify-center p-4 mx-8 items-center md:max-w-xl md:mx-auto rounded" id="testimonial-box">
+    <div id="user-text" class="mb-4 text-center">
+      <p class="text-lg">This guy is an amazing frontend developer that delivered the task exactly how we need it...</p>
+    </div>
+    <img id="user-photo" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Photo" class="rounded-full mb-4 mx-auto" />
+    <h4 id="user-name" class="font-bold">June Cha</h4>
+    <p id="user-position" class="text-sm text-gray-600">Software Engineer</p>
+  </section>
+
+<footer class="footer bg-purple-950 text-white px-6 py-12 rounded-tl-xl mt-6">
+  <div class="mb-6">
+    <h2 id="contact" class="text-2xl font-semibold mb-4">Contact us</h2>
+    <form id="contactForm" class="space-y-4">
+      <div>
+        <label for="Name" class="block text-sm">Name</label>
+        <input type="name" id="Name" placeholder="Your Name" class="w-full p-2 rounded border border-gray-300" />
+        <div id="error-Name" class="text-xs text-red-500"></div>
+      </div>
+
+      <div>
+        <label for="Email" class="block text-sm">Email</label>
+        <input type="email" id="Email" placeholder="Your Email" class="w-full p-2 rounded border border-gray-300" />
+        <div id="error-Email" class="text-xs text-red-500"></div>
+      </div>
+
+      <div>
+        <label for="Message" class="block text-sm">Message</label>
+        <textarea name="text" id="Message" placeholder="Your Message" rows="4" class="w-full p-2 rounded border border-gray-300"></textarea>
+        <div id="error-Message" class="text-xs text-red-500"></div>
+      </div>
+
+      <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-white hover:text-purple-600">Submit</button>
+    </form>
+  </div>
+
+  <p id="allrights" class="text-center mt-6">© <span id="year"></span>2025. Your Competitive Programming Platform. All rights reserved.</p>
+</footer>
+    
   </body>
 </html>

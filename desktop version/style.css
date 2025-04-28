@@ -381,7 +381,8 @@ h3 {
   box-sizing: border-box;
 }
 
-#user {
+
+#user-photo {
   align-self: center;
   width: 50%;
   border-radius: 100%;
