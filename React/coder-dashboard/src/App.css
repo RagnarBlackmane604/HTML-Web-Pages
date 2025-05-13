@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light Theme */
+.light {
+    --background-color: #CBD5E1;
+    --navbar-bg-color: #E5E7EB;
+    --font-color: black;
+  }
+  
+  /* Dark Theme */
+  .dark {
+    --background-color: #4322C9A3;
+    --navbar-bg-color: #23155B;
+    --font-color: white;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--font-color);
+  }
+  
+  nav {
+    background-color: var(--navbar-bg-color);
+  }
+  
