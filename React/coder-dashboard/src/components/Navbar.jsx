@@ -7,6 +7,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
+  if (user) return null;
+
   return (
     <nav className="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-gray-200 gap-4 md:gap-0">
       <div className="flex items-center gap-2">
@@ -27,6 +29,7 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/dashboard" className="text-black">Dashboard</Link>
+            <Link to="/leaderboard" className="text-black">Leaderboard</Link>
             <button
               onClick={() => dispatch(logout())}
               className="text-sm text-red-500 hover:underline"

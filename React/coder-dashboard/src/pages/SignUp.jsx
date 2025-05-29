@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { register as registerUser } from "../api/auth";
 import { useDispatch } from "react-redux";
-import { setUser } from "../redux/authSlice";
+import { registerUser } from "../redux/authSlice"; // AsyncThunk importieren
 import { useState } from "react";
 import signupImage from "../assets/coding.png";
 
@@ -27,11 +26,18 @@ export default function SignUp() {
   });
 
   const onSubmit = async (data) => {
+    setApiError(""); // Fehler zurücksetzen
     try {
-      const result = await registerUser(data);
-      dispatch(setUser(result.user));
+      // AsyncThunk dispatchen und auf Ergebnis warten
+      const resultAction = await dispatch(registerUser(data));
+      if (registerUser.fulfilled.match(resultAction)) {
+        // Erfolg: resultAction.payload enthält user-Daten (optional hier weiter nutzen)
+      } else {
+        // Fehler aus rejected case holen
+        setApiError(resultAction.payload || "Registration failed");
+      }
     } catch (err) {
-      setApiError(err.message);
+      setApiError(err.message || "Something went wrong");
     }
   };
 

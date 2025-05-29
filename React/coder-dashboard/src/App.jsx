@@ -1,27 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importing necessary Router components
-import SignIn from "./pages/SignIn"; 
-import SignUp from "./pages/SignUp"; 
-import ProtectedRoute from "./routes/ProtectedRoute"; // Component to protect routes (only accessible by logged-in users)
-import Home from "./pages/Home"; 
-import Dashboard from "./pages/Dashboard"; 
-import Navbar from "./components/Navbar"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/Navbar";
+import Leaderboard from "./pages/Leaderboard";
 
-// Main App Component
 export default function App() {
   return (
     <Router>
-      <Navbar /> {/* The Navbar is included globally */}
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Home Page Route */}
-        <Route path="/signin" element={<SignIn />} /> {/* Sign-In Page Route */}
-        <Route path="/signup" element={<SignUp />} /> {/* Sign-Up Page Route */}
-        
-        {/* Protected Route for Dashboard */}
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+
+        {/* Geschützte Route für Dashboard */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard /> {/* Only accessible if the user is authenticated */}
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Geschützte Route für Leaderboard */}
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
+              <Leaderboard />
             </ProtectedRoute>
           }
         />
