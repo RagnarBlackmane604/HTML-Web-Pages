@@ -35,7 +35,7 @@ export default function SignIn() {
   // Nach erfolgreichem Login weiterleiten
   useEffect(() => {
     if (user) {
-      navigate("/leaderboard");
+      navigate("/profile");
     }
   }, [user, navigate]);
 

@@ -31,7 +31,7 @@ export default function SignUp() {
       // AsyncThunk dispatchen und auf Ergebnis warten
       const resultAction = await dispatch(registerUser(data));
       if (registerUser.fulfilled.match(resultAction)) {
-        // Erfolg: resultAction.payload enthält user-Daten (optional hier weiter nutzen)
+        // Erfolg: resultAction.payload enthält user-Daten 
       } else {
         // Fehler aus rejected case holen
         setApiError(resultAction.payload || "Registration failed");

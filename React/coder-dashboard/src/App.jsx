@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Leaderboard from "./pages/Leaderboard";
+import Profile from './components/Profile';
 
 export default function App() {
   return (
@@ -35,6 +36,17 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+{/* Geschützte Route für Profile */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </Router>
   );

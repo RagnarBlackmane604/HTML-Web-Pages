@@ -28,7 +28,6 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// Auth slice definition
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -41,6 +40,15 @@ const authSlice = createSlice({
       state.user = null;
       state.status = 'idle';
       state.error = null;
+    },
+    updateProfile(state, action) {
+      if (state.user) {
+        // Merge existing user with updated fields
+        state.user = {
+          ...state.user,
+          ...action.payload,
+        };
+      }
     },
   },
   extraReducers: (builder) => {
@@ -75,5 +83,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, updateProfile } = authSlice.actions;
 export default authSlice.reducer;

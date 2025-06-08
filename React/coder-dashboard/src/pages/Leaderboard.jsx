@@ -34,6 +34,7 @@ export default function Leaderboard() {
     ? `${user.firstName?.[0] || ""}${user.lastName?.[0] || ""}`.toUpperCase()
     : "";
 
+  const avatar = user?.avatar || avatarImg;  
   const [darkMode, setDarkMode] = useState(false);
 
   // Optional: Apply dark mode to body
@@ -60,18 +61,24 @@ export default function Leaderboard() {
           <Link to="/leaderboard" className="text-sm hover:underline">
             Leaderboard
           </Link>
+          {/* <Link to="/profile" className="text-sm hover:underline">
+          Profile
+          </Link> */}
         </div>
 
         {/* Right: Avatar and Toggle */}
         <div className="flex items-center gap-4">
           {user && (
-            <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-md overflow-hidden">
+            <Link
+              to="/profile"
+              className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-md overflow-hidden"
+            >
               <img
-                src={avatarImg}
+                src={avatar}
                 alt="User Avatar"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </Link>
           )}
           {/* Toggle Switch */}
           <label className="flex items-center cursor-pointer">
@@ -112,10 +119,7 @@ export default function Leaderboard() {
         <tbody>
           {dummyData.map(
             ({ rank, first_name, last_name, score, solved_challenges }) => (
-              <tr
-                key={rank}
-                className="text-center border border-gray-300"
-              >
+              <tr key={rank} className="text-center border border-gray-300">
                 <td className="border border-gray-300 p-2">{rank}</td>
                 <td className="border border-gray-300 p-2">
                   {`${first_name} ${last_name}`}
