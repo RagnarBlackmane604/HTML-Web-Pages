@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Leaderboard from "./pages/Leaderboard";
 import Profile from './components/Profile';
+import Workspace from './components/Workspace';
+import { ChallengeProvider } from './contexts/ChallengeContext';
 
 export default function App() {
   return (
@@ -17,7 +19,7 @@ export default function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* Geschützte Route für Dashboard */}
+        {/* Protected routes */}
         <Route
           path="/dashboard"
           element={
@@ -26,8 +28,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* Geschützte Route für Leaderboard */}
         <Route
           path="/leaderboard"
           element={
@@ -36,8 +36,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
-{/* Geschützte Route für Profile */}
         <Route
           path="/profile"
           element={
@@ -47,6 +45,20 @@ export default function App() {
           }
         />
 
+        {/* Redirect /workspace to a default challenge */}
+        <Route
+          path="/workspace"
+          element={<Navigate to="/workspace/1" replace />}
+        />
+
+        <Route
+          path="/workspace/:challengeId"
+          element={
+            <ProtectedRoute>
+              <Workspace />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../redux/authSlice";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
-  if (user) return null;
+  if (user) return null; // Hide navbar when user is logged in
 
   return (
     <nav className="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-gray-200 gap-4 md:gap-0">
@@ -21,23 +19,8 @@ const Navbar = () => {
         <HashLink smooth to="/#coders" className="text-black">For coders</HashLink>
         <HashLink smooth to="/#managers" className="text-black">For developers</HashLink>
 
-        {!user ? (
-          <>
-            <Link to="/signin" className="text-black">Sign In</Link>
-            <Link to="/signup" className="bg-purple-600 text-white text-sm px-3 py-2 rounded hover:bg-white hover:text-purple-600">Join Now</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/dashboard" className="text-black">Dashboard</Link>
-            <Link to="/leaderboard" className="text-black">Leaderboard</Link>
-            <button
-              onClick={() => dispatch(logout())}
-              className="text-sm text-red-500 hover:underline"
-            >
-              Logout
-            </button>
-          </>
-        )}
+        <Link to="/signin" className="text-black">Sign In</Link>
+        <Link to="/signup" className="bg-purple-600 text-white text-sm px-3 py-2 rounded hover:bg-white hover:text-purple-600">Join Now</Link>
       </div>
     </nav>
   );

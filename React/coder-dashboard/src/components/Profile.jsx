@@ -73,14 +73,14 @@ export default function Profile() {
         <div className="flex items-center gap-4">
           <img src={logo} alt="Logo" className="w-12 h-12" />
           <h5 className="font-semibold text-lg">CodeCLA</h5>
-          <Link to="/challenges" className="text-sm hover:underline">
+          <Link to="/workspace" className="text-sm hover:underline">
             Challenges
           </Link>
           <Link to="/leaderboard" className="text-sm hover:underline">
             Leaderboard
           </Link>
-          {/*  <Link to="/profile" className="text-sm hover:underline">
-            Profile
+          {/*  <Link to="/workspace" className="text-sm hover:underline">
+            Workspace
           </Link> */}
         </div>
 

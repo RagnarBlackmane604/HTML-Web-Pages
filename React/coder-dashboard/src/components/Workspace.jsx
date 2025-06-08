@@ -3,7 +3,7 @@ import Split from "react-split";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ChallengeDescription from "./ChallengeDescription";
-import Playground from "./Playground";
+import { CodeEditor, TestCases } from "./Playground"; // import individual components
 import avatar from "../assets/avatar.jpg";
 import logo from "../assets/logo.svg";
 
@@ -33,8 +33,15 @@ const Workspace = () => {
 
         <div className="flex items-center gap-4">
           {user && (
-            <Link to="/profile" className="w-10 h-10 rounded-full overflow-hidden">
-              <img src={avatar} alt="Avatar" className="w-full h-full object-cover" />
+            <Link
+              to="/profile"
+              className="w-10 h-10 rounded-full overflow-hidden"
+            >
+              <img
+                src={avatar}
+                alt="Avatar"
+                className="w-full h-full object-cover"
+              />
             </Link>
           )}
           <label className="flex items-center cursor-pointer">
@@ -69,14 +76,39 @@ const Workspace = () => {
           direction="horizontal"
           cursor="col-resize"
         >
-          {/* Left: Challenge description */}
-          <div className={`p-4 overflow-auto ${darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
-            <ChallengeDescription darkMode={darkMode} challengeId={challengeId} />
+          {/* Left: Challenge Description */}
+          <div
+            className={`p-4 overflow-auto ${
+              darkMode ? "bg-gray-700" : "bg-gray-100"
+            }`}
+          >
+            <ChallengeDescription
+              darkMode={darkMode}
+              challengeId={challengeId}
+            />
           </div>
 
-          {/* Right: Playground (code editor + test cases) */}
-          <div className={`p-4 overflow-auto ${darkMode ? "bg-gray-700" : "bg-gray-100"}`}>
-            <Playground darkMode={darkMode} challengeId={challengeId} />
+          {/* Right: Code Editor + Test Cases split vertically */}
+          <div
+            className={`p-4 overflow-auto ${
+              darkMode ? "bg-gray-700" : "bg-gray-100"
+            }`}
+          >
+            <Split
+              className="flex flex-col h-full"
+              sizes={[70, 30]}
+              minSize={100}
+              gutterSize={8}
+              direction="vertical"
+              cursor="row-resize"
+            >
+              <div className="overflow-auto">
+                <CodeEditor darkMode={darkMode} challengeId={challengeId} />
+              </div>
+              <div className="overflow-auto">
+                <TestCases darkMode={darkMode} challengeId={challengeId} />
+              </div>
+            </Split>
           </div>
         </Split>
       </div>
