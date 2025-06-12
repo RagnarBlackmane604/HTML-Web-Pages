@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile } from "../redux/authSlice";
-import { Link } from "react-router-dom";
-import logo from "../assets/logo.svg";
 import avatarImg from "../assets/avatar.jpg";
 import StatsPanel from "./StatsPanel";
 import Statistics from "./Statistics";
+import TopBar from "../components/TopBar";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -63,67 +62,19 @@ export default function Profile() {
 
   return (
     <div
-      className={`relative p-8 max-w-6xl mx-auto shadow-md rounded transition-colors duration-300 ${
+      className={`min-h-screen flex flex-col transition-colors duration-300 ${
         darkMode ? "bg-gray-900 text-white" : "bg-white text-black"
       }`}
     >
       {/* Top bar with logo, links and avatar/toggle */}
-      <div className="flex justify-between items-center mb-6">
-        {/* Left: Logo and nav links */}
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Logo" className="w-12 h-12" />
-          <h5 className="font-semibold text-lg">CodeCLA</h5>
-          <Link to="/workspace" className="text-sm hover:underline">
-            Challenges
-          </Link>
-          <Link to="/leaderboard" className="text-sm hover:underline">
-            Leaderboard
-          </Link>
-          {/*  <Link to="/workspace" className="text-sm hover:underline">
-            Workspace
-          </Link> */}
-        </div>
-
-        {/* Right: Avatar and Toggle */}
-        <div className="flex items-center gap-4">
-          {user && (
-            <Link
-              to="/profile"
-              className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-md overflow-hidden"
-            >
-              <img
-                src={avatar}
-                alt="User Avatar"
-                className="w-full h-full object-cover"
-              />
-            </Link>
-          )}
-          {/* Toggle Switch */}
-          <label className="flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
-              className="sr-only"
-            />
-            <div
-              className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors duration-300 ${
-                darkMode ? "bg-purple-600" : "bg-gray-300"
-              }`}
-            >
-              <div
-                className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${
-                  darkMode ? "translate-x-5" : ""
-                }`}
-              />
-            </div>
-          </label>
-        </div>
-      </div>
+      <TopBar
+        darkMode={darkMode}
+        toggleDarkMode={() => setDarkMode(!darkMode)}
+      />
 
       {/* Main content: form and stats side-by-side */}
       <div
-        className={`flex flex-col lg:flex-row gap-8 p-6 rounded-lg transition-colors duration-300 ${
+        className={`flex-grow flex flex-col lg:flex-row gap-8 p-6 transition-colors duration-300 ${
           darkMode ? "bg-gray-800" : "bg-gray-100"
         }`}
       >

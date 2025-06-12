@@ -14,8 +14,10 @@ const TestCases = ({ darkMode, challengeId }) => {
 
   return (
     <div
-      className={`p-4 h-full ${
-        darkMode ? 'bg-gray-800 text-gray-100' : 'bg-gray-100 text-black'
+      className={`p-4 h-full border-t ${
+        darkMode
+          ? 'bg-gray-800 text-gray-100 border-gray-700'
+          : 'bg-white text-black border-gray-300'
       }`}
     >
       <div className="flex gap-4 mb-2">
@@ -26,7 +28,7 @@ const TestCases = ({ darkMode, challengeId }) => {
             className={`px-3 py-1 rounded ${
               selectedTestCase === i
                 ? 'bg-purple-600 text-white'
-                : 'bg-gray-300'
+                : 'bg-gray-200 hover:bg-gray-300'
             }`}
           >
             Case {i + 1}
@@ -34,7 +36,7 @@ const TestCases = ({ darkMode, challengeId }) => {
         ))}
       </div>
 
-      <div className="text-sm">
+      <div className="text-sm space-y-1">
         <p>
           <strong>Input:</strong> {selected.input}
         </p>

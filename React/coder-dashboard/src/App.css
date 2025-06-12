@@ -1,27 +1,37 @@
-@import "tailwindcss";
+/* Dark Mode Styling via .dark */
+/* .dark {
+  --background-color: #4322C9A3;
+  --navbar-bg-color: #23155B;
+  --font-color: white;
+} */
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Light Mode = default */
+/* body {
+  background-color: #CBD5E1;
+  color: black;
+}
+ */
+/* .dark body {
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
 
-/* Light Theme */
-.light {
-    --background-color: #CBD5E1;
-    --navbar-bg-color: #E5E7EB;
-    --font-color: black;
-  }
-  
-  /* Dark Theme */
-  .dark {
-    --background-color: #4322C9A3;
-    --navbar-bg-color: #23155B;
-    --font-color: white;
-  }
-  
-  body {
-    background-color: var(--background-color);
-    color: var(--font-color);
-  }
-  
-  nav {
-    background-color: var(--navbar-bg-color);
-  }
+nav {
+  background-color: #E5E7EB;
+}
+
+.dark nav {
+  background-color: var(--navbar-bg-color);
+} */
+
+
+  .__react_component_tooltip {
+  background-color: gray-300;
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 6px 8px;
+  border-radius: 4px;
+  max-width: 200px;
+  text-align: center;
+}
   

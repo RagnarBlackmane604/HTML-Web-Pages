@@ -20,7 +20,6 @@ const Playground = ({ darkMode, challengeId }) => {
   );
 };
 
-// ✅ Export both the Playground component and the inner ones
 export default Playground;
 export { CodeEditor, TestCases };
 
