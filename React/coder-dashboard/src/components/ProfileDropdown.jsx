@@ -1,9 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/authSlice";
 
 const ProfileDropdown = ({ avatarUrl, darkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Close dropdown if click outside
   useEffect(() => {
@@ -18,6 +22,12 @@ const ProfileDropdown = ({ avatarUrl, darkMode }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleLogout = () => {
+    setIsOpen(false);
+    dispatch(logout());
+    navigate("/login");
+  };
 
   const dropdownBgClass = darkMode
     ? "bg-gray-800 border-gray-700 text-gray-200"
@@ -61,10 +71,7 @@ const ProfileDropdown = ({ avatarUrl, darkMode }) => {
           </Link>
           <button
             className={`w-full text-left px-4 py-2 ${hoverBgClass}`}
-            onClick={() => {
-              setIsOpen(false);
-              
-            }}
+            onClick={handleLogout}
           >
             Logout
           </button>

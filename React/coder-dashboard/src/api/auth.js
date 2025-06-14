@@ -11,3 +11,8 @@ export const register = async (data) => {
   const response = await axios.post(`${API_URL}/register`, data);
   return response.data; // { token, user }
 };
+
+export const updateUserProfile = async (profileData) => {
+  const response = await axios.put('/api/user/profile', profileData);
+  return response.data;
+};

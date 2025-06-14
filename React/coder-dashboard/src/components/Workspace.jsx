@@ -5,23 +5,28 @@ import { useSelector } from "react-redux";
 import ChallengeDescription from "./ChallengeDescription";
 import { CodeEditor, TestCases } from "./Playground";
 import TopBar from "./TopBar";
-import { useChallenge, challenges } from "../contexts/ChallengeContext";
-import MarkdownPreview from "@uiw/react-markdown-preview";
+import { useChallenge } from "../contexts/ChallengeContext";
 
 const Workspace = () => {
   const [darkMode, setDarkMode] = useState(false);
   const user = useSelector((state) => state.auth.user);
   const { challengeId } = useParams();
-  const { setCurrentChallenge, currentChallenge } = useChallenge();
+
+  const { selectChallengeById, currentChallenge } = useChallenge();
 
   useEffect(() => {
-    const challenge = challenges.find(
-      (ch) => ch.id.toString() === challengeId.toString()
-    );
-    if (challenge) {
-      setCurrentChallenge(challenge);
+    if (challengeId) {
+      selectChallengeById(challengeId);
     }
-  }, [challengeId, setCurrentChallenge]);
+  }, [challengeId, selectChallengeById]);
+
+  if (!currentChallenge) {
+    return (
+      <div className={`h-screen flex items-center justify-center ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+        <p>Lade Challenge...</p>
+      </div>
+    );
+  }
 
   // Helper for styling panels
   const panelClass = (darkMode, shades) =>
@@ -58,8 +63,8 @@ const Workspace = () => {
               light: "gray-100",
             })}
           >
-            {/* Challenge Description (Title, Metadata, etc.) */}
-            <ChallengeDescription darkMode={darkMode} challengeId={challengeId} />
+            <ChallengeDescription darkMode={darkMode} />
+
           </div>
 
           {/* Right Panel */}

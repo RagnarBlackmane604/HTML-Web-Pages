@@ -27,7 +27,7 @@ const ChallengeDescription = ({ darkMode }) => {
       {/* Title */}
       <h1 className="text-2xl font-bold mb-4">{challenge.title}</h1>
 
-      {/* Markdown */}
+      {/* Markdown Description */}
       <div className="rounded overflow-auto">
         <MarkdownPreview
           source={challenge.description}

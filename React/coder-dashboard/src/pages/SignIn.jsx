@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const { user, status, error } = useSelector((state) => state.auth);
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -20,7 +19,7 @@ export default function SignIn() {
   const validate = () => {
     const errs = {};
     if (!form.email.includes("@")) errs.email = "Invalid email";
-    if (form.password.length < 6) errs.password = "Too short";
+    if (form.password.length < 6) errs.password = "Password too short";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -32,7 +31,6 @@ export default function SignIn() {
     }
   };
 
-  // Nach erfolgreichem Login weiterleiten
   useEffect(() => {
     if (user) {
       navigate("/profile");
@@ -50,9 +48,10 @@ export default function SignIn() {
           <h2 className="text-2xl font-bold mb-6 text-center">Join Coders now!</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {error && <p className="text-red-500">{error}</p>}
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <input
+              type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
@@ -62,10 +61,10 @@ export default function SignIn() {
             {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 
             <input
+              type="password"
               name="password"
               value={form.password}
               onChange={handleChange}
-              type="password"
               placeholder="Password"
               className="w-full text-white bg-blue-950 p-2 border rounded"
             />
@@ -73,10 +72,10 @@ export default function SignIn() {
 
             <button
               type="submit"
+              disabled={status === "loading"}
               className="w-full bg-blue-600 text-white py-2 rounded"
-              disabled={loading}
             >
-              {loading ? "Signing In..." : "Sign In"}
+              {status === "loading" ? "Signing In..." : "Sign In"}
             </button>
 
             <p className="text-sm text-center mt-4">

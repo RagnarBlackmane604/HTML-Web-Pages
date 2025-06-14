@@ -77,7 +77,7 @@ export default function App() {
 
         {/* Workspace for a specific challenge */}
         <Route
-          path="/challenges/:challengeId"
+          path="/workspace/:challengeId"
           element={
             <ProtectedRoute>
               <Workspace />

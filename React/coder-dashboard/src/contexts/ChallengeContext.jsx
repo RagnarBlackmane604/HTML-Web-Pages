@@ -11,23 +11,21 @@ indices of the two numbers such that they add up to \`target\`. You
 may assume that each input would have exactly one solution, and you
 may not use the same element twice. You can return the answer in any
 order.
-
 ### Example:
-Input: \`nums = [2,7,11,15]\`, \`target = 9\`  
-Output: \`[0,1]\`  
+Input: \`nums = [2,7,11,15]\`, \`target = 9\`
+Output: \`[0,1]\`
 Explanation: \`nums[0] + nums[1] = 2 + 7 = 9\`, so the answer is
 \`[0,1]\`.
-
 ### Constraints:
 - \`2 <= nums.length <= 10^4\`
 - \`-10^9 <= nums[i] <= 10^9\`
 - \`-10^9 <= target <= 10^9\`
 - Only one valid answer exists.
-
 ### Approach:
 A brute force approach involves iterating through the array and
 checking every pair of elements to see if their sum equals the
-target. However, this approach would have a time complexity of  
+target. However, this approach would have a time complexity of
+
 O(n^2). A more efficient approach involves using a hash table (or
 dictionary in Python) to store the indices of the elements as we
 iterate through the array. This way, we can check if the complement
@@ -37,9 +35,7 @@ table in constant time, reducing the time complexity to O(n).
     difficulty: "Easy",
     category: "arrays",
     status: "Completed",
-    tests: [
-      /* ... */
-    ],
+    tests: [],
   },
   {
     id: 146,
@@ -65,14 +61,13 @@ You can solve this using either:
 - An iterative method with a loop (O(n) time and space)
 - Recursion (less efficient)
 - Memoization or dynamic programming to improve recursion
-`,
+`
+,
     category: "Data structure",
     difficulty: "Moderate",
     status: "Attempted",
     solutionRate: "45%",
-    tests: [
-      /* ... */
-    ],
+    tests: [],
   },
   {
     id: 147,
@@ -96,14 +91,13 @@ Output: \`[[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]\`
 ### Approach:
 This problem can be solved efficiently using a **sweep line algorithm** and a max-heap to keep track of active buildings.  
 The key challenge is managing overlapping intervals and detecting height changes.
-`,
+`
+,
     category: "Data structure",
     difficulty: "Moderate",
     status: "Pending",
     solutionRate: "45%",
-    tests: [
-      /* ... */
-    ],
+    tests: [],
   },
   {
     id: 148,
@@ -131,14 +125,13 @@ Explanation: Schedule jobs 1 and 4 for max profit (50 + 70).
 ### Approach:
 Use **dynamic programming with binary search** to find the next non-overlapping job for each current job.  
 Sort by end time and use a DP array to store the max profit up to each job.
-`,
+`
+,
     category: "Algorithms",
     difficulty: "Hard",
     status: "Pending",
     solutionRate: "20%",
-    tests: [
-      /* ... */
-    ],
+    tests: [],
   },
 ];
 
@@ -147,9 +140,14 @@ const ChallengeContext = createContext();
 export const ChallengeProvider = ({ children }) => {
   const [currentChallenge, setCurrentChallenge] = useState(null);
 
+  const selectChallengeById = (id) => {
+    const found = challenges.find((ch) => ch.id === Number(id));
+    setCurrentChallenge(found || null);
+  };
+
   return (
     <ChallengeContext.Provider
-      value={{ currentChallenge, setCurrentChallenge }}
+      value={{ currentChallenge, selectChallengeById }}
     >
       {children}
     </ChallengeContext.Provider>
