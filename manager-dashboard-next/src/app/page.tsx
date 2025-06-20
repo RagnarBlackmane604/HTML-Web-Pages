@@ -5,7 +5,7 @@ import ChallengesList from "@/components/ChallengesList";
 import FontSizeMenu from "@/components/FontSizeMenu";
 import LanguageMenu from "@/components/LanguageMenu";
 import TestCaseField from "@/components/TestCaseField";
-import { Challenge } from "./types";
+import { Challenge } from "@/app/types";
 
 import { getServerSession } from "next-auth"; 
 import { authOptions } from "@/lib/auth"; 

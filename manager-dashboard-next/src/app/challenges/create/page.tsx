@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-
 const ChallengeForm = dynamic(() => import("@/components/ChallengeForm"), { ssr: false });
 
 export default function CreateChallengePage() {
@@ -19,7 +18,7 @@ export default function CreateChallengePage() {
       });
       if (res.ok) {
         toast.success("Challenge created successfully");
-        router.push("/");
+        router.push("/challenges");  // Zu /challenges navigieren, nicht zur Root
       } else {
         toast.error("Failed to create challenge");
       }
@@ -28,5 +27,10 @@ export default function CreateChallengePage() {
     }
   }
 
-  return <ChallengeForm onSubmit={handleCreate} />;
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-6">Create Challenge</h1>
+      <ChallengeForm onSubmit={handleCreate} />
+    </div>
+  );
 }

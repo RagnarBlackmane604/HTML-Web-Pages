@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-// Types
 interface User {
   id: string;
   name: string;
+  email?: string;
 }
 
 interface AuthState {
@@ -14,7 +14,6 @@ interface AuthState {
   loading: boolean;
 }
 
-// Initial state
 const initialState: AuthState = {
   isAuthenticated: false,
   user: null,
@@ -23,7 +22,7 @@ const initialState: AuthState = {
   loading: false,
 };
 
-// Async thunk: REGISTER
+// REGISTER
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (
@@ -36,25 +35,17 @@ export const registerUser = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, password }),
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        return rejectWithValue(errorData.message || 'Registration failed');
+      if (firstName.length < 2 || lastName.length < 2 || password.length < 6) {
+        return rejectWithValue('Validation error: Please check your inputs');
       }
-
-      const data = await res.json();
 
       return {
         user: {
-          id: data.user.id,
-          name: `${data.user.firstName} ${data.user.lastName}`,
+          id: 'mock-id-123',
+          name: `${firstName} ${lastName}`,
+          email,
         },
-        token: data.token,
+        token: 'fake-jwt-token',
       };
     } catch {
       return rejectWithValue('Registration failed');
@@ -62,8 +53,7 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-
-
+// LOGIN
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (
@@ -71,33 +61,25 @@ export const loginUser = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        return rejectWithValue(errorData.message || 'Login failed');
+      if (email === 'admin@admin.com' && password === 'admin123') {
+        return {
+          user: {
+            id: 'mock-id-123',
+            name: 'Admin User',
+            email,
+          },
+          token: 'fake-jwt-token',
+        };
+      } else {
+        return rejectWithValue('Invalid email or password');
       }
-
-      const data = await res.json();
-
-      return {
-        user: {
-          id: data.user.id,
-          name: `${data.user.firstName} ${data.user.lastName}`,
-        },
-        token: data.token,
-      };
-    } catch (err) {
+    } catch {
       return rejectWithValue('Login failed');
     }
   }
 );
 
-// Slice
+// SLICE
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -115,7 +97,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Register
+      // REGISTER
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -132,7 +114,7 @@ const authSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // Login
+      // LOGIN
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.error = null;

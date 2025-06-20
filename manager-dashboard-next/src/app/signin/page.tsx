@@ -61,7 +61,7 @@ export default function SignIn() {
         <Card className="w-full max-w-md p-6">
           <CardContent>
             <h2 className="text-2xl font-bold mb-6 text-center">
-              Join Coders now!
+              Join Managers now!
             </h2>
 
             {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
