@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default async function ChallengePage({ params }: Props) {
-  // Pfad zu deiner JSON-Datei (im Root, falls db.json dort liegt)
   const filePath = path.join(process.cwd(), "db.json");
 
   // JSON-Datei lesen
