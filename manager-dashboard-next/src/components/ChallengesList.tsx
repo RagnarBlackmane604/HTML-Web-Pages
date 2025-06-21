@@ -22,22 +22,28 @@ interface Challenge {
   level: string;
 }
 
-export default function ChallengesList() {
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
+interface ChallengesListProps {
+  challenges?: Challenge[]; 
+}
+
+export default function ChallengesList({ challenges: initialChallenges }: ChallengesListProps) {
+  const [challenges, setChallenges] = useState<Challenge[]>(initialChallenges || []);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
   useEffect(() => {
-    async function fetchChallenges() {
-      try {
-        const data = await getAllChallenges();
-        setChallenges(data);
-      } catch (error) {
-        toast.error('Failed to load challenges');
+    if (!initialChallenges) {
+      async function fetchChallenges() {
+        try {
+          const data = await getAllChallenges();
+          setChallenges(data);
+        } catch (error) {
+          toast.error('Failed to load challenges');
+        }
       }
+      fetchChallenges();
     }
-    fetchChallenges();
-  }, []);
+  }, [initialChallenges]);
 
   const handleDelete = async (id: string) => {
     startTransition(async () => {

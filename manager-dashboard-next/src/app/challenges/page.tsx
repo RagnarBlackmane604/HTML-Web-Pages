@@ -8,5 +8,4 @@ export default function ChallengesPage() {
       <ChallengesList />
     </main>
   );
-}
- */
+} */

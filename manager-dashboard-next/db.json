@@ -29,16 +29,6 @@
       "code": {},
       "tests": [],
       "createdAt": "2024-04-02"
-    },
-    {
-      "id": "4",
-      "title": "Merge Sort",
-      "category": "Algorithms",
-      "description": "### Problem Statement:\nImplement the merge sort algorithm to efficiently sort an array of elements. The merge sort algorithm divides the array into two halves, recursively sorts the sub-arrays, and then merges the sorted halves.",
-      "level": "Hard",
-      "code": {},
-      "tests": [],
-      "createdAt": "2024-04-02"
     }
   ]
 }

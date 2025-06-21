@@ -6,7 +6,7 @@ export interface Challenge {
   description?: string;
   functionName?: string;
   language?: "js" | "py";
-  fontSize?: string;
+  fontSize?: number;
   code?: string;
   tests?: Array<{
     type: "string" | "number";
@@ -15,4 +15,15 @@ export interface Challenge {
     output: string;
     weight: number;
   }>;
+}
+
+export enum ChallengeLevel {
+  Easy = 'Easy',
+  Moderate = 'Moderate',
+  Hard = 'Hard'
+}
+
+export enum Language {
+  JS = 'js',
+  PY = 'py'
 }

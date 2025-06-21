@@ -3,10 +3,16 @@
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 export default function TestCaseField() {
   const [text, setText] = useState("");
   const [caseType, setCaseType] = useState("uppercase");
+
+  const [value, setValue] = useState("42");
+  const [output, setOutput] = useState("Result");
+  const [weight, setWeight] = useState(0.5);
 
   const transformText = () => {
     if (caseType === "uppercase") return text.toUpperCase();
@@ -14,49 +20,129 @@ export default function TestCaseField() {
     return text;
   };
 
+  const InputWithControls = ({
+    id,
+    value,
+    onChange,
+    onIncrement,
+    onDecrement,
+    type = "text",
+    step,
+    min,
+    max,
+    placeholder,
+  }: {
+    id: string;
+    value: any;
+    onChange: (e: any) => void;
+    onIncrement: () => void;
+    onDecrement: () => void;
+    type?: string;
+    step?: number;
+    min?: number;
+    max?: number;
+    placeholder?: string;
+  }) => (
+    <div className="relative">
+      <Input
+        id={id}
+        type={type}
+        step={step}
+        min={min}
+        max={max}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="pr-10"
+      />
+      <div className="absolute right-1 top-1/2 -translate-y-1/2 flex flex-col rounded overflow-hidden border bg-gray-200 shadow-sm z-10">
+        <Button
+          type="button"
+          className="h-5 w-5 p-0 bg-gray-200 hover:bg-gray-300 border-b border-gray-300"
+          onClick={onIncrement}
+        >
+          <ChevronUp className="w-3 h-3 text-gray-700" />
+        </Button>
+        <Button
+          type="button"
+          className="h-5 w-5 p-0 bg-gray-200 hover:bg-gray-300"
+          onClick={onDecrement}
+        >
+          <ChevronDown className="w-3 h-3 text-gray-700" />
+        </Button>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="space-y-4">
-      {/* Inputs grouped in two columns */}
-      <div className="flex gap-6">
-        {/* Left box: Type, Name, Value side-by-side */}
-        <div className="flex-1 border rounded p-4">
-          <div className="flex gap-4">
-            <div className="flex-1">
-              <Label htmlFor="type">Type</Label>
-              <Input id="type" placeholder="Type (e.g. string)" />
-            </div>
-            <div className="flex-1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Name" />
-            </div>
-            <div className="flex-1">
-              <Label htmlFor="value">Value</Label>
-              <Input id="value" placeholder="Value" />
-            </div>
+    <div className="space-y-6">
+      {/* Grid: left = type, name, value | right = output, weight */}
+      <div className="grid grid-cols-2 gap-6">
+        {/* Left box */}
+        <div className="border rounded p-4 space-y-4 bg-gray-50">
+          <div>
+            <Label htmlFor="type">Type</Label>
+            <Input id="type" placeholder="Type (e.g. string)" />
+          </div>
+          <div>
+            <Label htmlFor="name">Name</Label>
+            <Input id="name" placeholder="Name" />
+          </div>
+          <div>
+            <Label htmlFor="value">Value</Label>
+            <InputWithControls
+              id="value"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onIncrement={() =>
+                setValue((prev) => String(Number(prev || "0") + 1))
+              }
+              onDecrement={() =>
+                setValue((prev) => String(Number(prev || "0") - 1))
+              }
+              placeholder="Value"
+            />
           </div>
         </div>
 
-        {/* Right box: Output and Weight in separate boxes */}
-        <div className="flex flex-col gap-4 flex-1">
-          <div className="border rounded p-4">
+        {/* Right box */}
+        <div className="border rounded p-4 space-y-4 bg-gray-50">
+          <div>
             <Label htmlFor="output">Output</Label>
-            <Input id="output" placeholder="Output" />
+            <InputWithControls
+              id="output"
+              value={output}
+              onChange={(e) => setOutput(e.target.value)}
+              onIncrement={() => setOutput((prev) => prev + "!")}
+              onDecrement={() => setOutput((prev) => prev.slice(0, -1))}
+              placeholder="Output"
+            />
           </div>
-          <div className="border rounded p-4">
+          <div>
             <Label htmlFor="weight">Weight</Label>
-            <Input
+            <InputWithControls
               id="weight"
               type="number"
-              step="0.01"
+              step={0.01}
               min={0}
               max={1}
+              value={weight}
+              onChange={(e) =>
+                setWeight(parseFloat(e.target.value || "0"))
+              }
+              onIncrement={() =>
+                setWeight((prev) => Math.min(prev + 0.1, 1))
+              }
+              onDecrement={() =>
+                setWeight((prev) => Math.max(prev - 0.1, 0))
+              }
               placeholder="Weight (0 to 1)"
             />
           </div>
         </div>
       </div>
 
-      {/* The existing text input and radio buttons for case */}
+      {/* Text + Case Selection */}
       <div className="space-y-2">
         <Label htmlFor="textcase">Text Case</Label>
         <Input
