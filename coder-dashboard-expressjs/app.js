@@ -14,7 +14,6 @@ const profileManagerRoutes = require('./routes/profile/manager');
 const challengeRoutes = require('./routes/challengeRoutes');
 const submissionsRoutes = require('./routes/submissionsRoutes');
 
-
 app.use(express.json());
 
 // Auth Routes
@@ -37,13 +36,6 @@ app.use('/leaderboard', leaderboardRoutes);
 // Stats Routes
 app.use('/stats', statsRoutes);
 
-// Optional: Request Logger Middleware
-/* app.use((req, res, next) => {
-  console.log(`Request: ${req.method} ${req.url}`);
-  next();
-});
- */
-
 // Submissions Routes
 app.use('/submissions', submissionsRoutes);
 
@@ -51,6 +43,5 @@ app.use('/submissions', submissionsRoutes);
 app.get('/', (req, res) => {
   res.send('Willkommen auf der Startseite!');
 });
-
 
 module.exports = app;
