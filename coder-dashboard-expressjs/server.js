@@ -4,13 +4,9 @@ const mongoose = require('mongoose');
 const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/coder-dashboard';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongo:27017/coder-dashboard';
 
-// Zuerst: Mit MongoDB verbinden, dann Server starten
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(MONGO_URI, {})
 .then(() => {
   console.log('✅ MongoDB verbunden');
 
@@ -20,5 +16,5 @@ mongoose.connect(MONGO_URI, {
 })
 .catch((err) => {
   console.error('❌ MongoDB-Verbindungsfehler:', err);
-  process.exit(1); // App beenden bei Verbindungsfehler
+  process.exit(1); 
 });
